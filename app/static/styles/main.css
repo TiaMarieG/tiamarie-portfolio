@@ -44,7 +44,7 @@ body {
 .nav-content nav {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: center;
     padding-top: 0px;
     padding-right: 0px;
 }
@@ -112,4 +112,22 @@ body {
     width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu a {
+    align-items: center;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
 }

@@ -5,6 +5,16 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
+NAV_LINKS = [
+    {"name": "Home", "endpoint": "index"},
+    {"name": "Hobbies", "endpoint": "hobbies"}
+    
+]
+
+@app.context_processor
+def inject_nav_links():
+    return dict(nav_links=NAV_LINKS)
+
 
 @app.route('/')
 def index():
