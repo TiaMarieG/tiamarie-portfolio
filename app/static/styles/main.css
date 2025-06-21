@@ -95,3 +95,21 @@ body {
     font-size: 50px;
     font-weight: 700;
 }
+
+.hobby-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hobby-card {
+    width: 200px;
+    text-align: center;
+}
+
+.hobby-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
