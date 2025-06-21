@@ -21,7 +21,7 @@ For each of these tasks, you should create an [Issue](https://docs.github.com/en
 - [x] Add your previous work experiences - Done
 - [x] Add your hobbies (including images) - Done
 - [x] Add your current/previous education - Done
-- [x] Add a map of all the cool locations/countries you visited
+- [x] Add a map of all the cool locations/countries you visited - Done
 
 ### Flask Tasks
 - [x] Get your Flask app running locally on your machine using the instructions below. - Done
