@@ -30,7 +30,11 @@
                   <img src="./static/img/logo.svg" />
                </div>
             </a>
-            <a href="/hobbies">Hobbies</a>
+            <nav class="nav-menu">
+               {% for link in nav_links %}
+               <a href="{{ url_for(link.endpoint) }}">{{ link.name }}</a>
+               {% endfor %}
+            </nav>
          </div>
       </header>
 
