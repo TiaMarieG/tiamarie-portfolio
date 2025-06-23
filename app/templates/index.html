@@ -46,7 +46,7 @@
       </div>
 
       <main>
-         <div class="about-me">
+         <div class="section-card">
             <h2>About Me</h2>
             <p>
                Greetings! My name is Tia Marie Gordon. Technically, my first
@@ -79,7 +79,7 @@
             </ul>
          </div>
 
-         <div class="prev-work-experience">
+         <div class="section-card">
             <h2>Work Experience</h2>
             <ul>
                {% for job in work_experience %}
@@ -91,22 +91,32 @@
             </ul>
          </div>
 
-         <h2>Education</h2>
-         <ul>
-            {% for edu in education %}
-            <li>
-               <strong>{{ edu.degree }}</strong>, {{ edu.school }} ({{ edu.year
-               }})
-            </li>
-            {% endfor %}
-         </ul>
+         <div class="section-card">
+            <h2>Education</h2>
+            <ul>
+               {% for edu in education %}
+               <li>
+                  <strong>{{ edu.degree }}</strong>, {{ edu.school }} ({{
+                  edu.year }})
+               </li>
+               {% endfor %}
+            </ul>
+         </div>
 
-         <h2>States I've Visited</h2>
-         <img
-            src="./static/img/visited_states.jpg"
-            alt="Map of states visited"
-            class="states-visited"
-         />
+         <div class="section-card">
+            <h2>States I've Visited</h2>
+            <img
+               src="./static/img/visited_states.jpg"
+               alt="Map of states visited"
+               class="states-visited"
+            />
+         </div>
       </main>
+
+      <footer
+         style="padding: 20px; text-align: center; font-size: 14px; color: #999"
+      >
+         &copy; {{ title }} • {{ now().year }}
+      </footer>
    </body>
 </html>

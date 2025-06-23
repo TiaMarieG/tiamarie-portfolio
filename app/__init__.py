@@ -58,3 +58,9 @@ def hobbies():
         title="Hobbies",
         hobbies=hobbies_list
     )
+
+from datetime import datetime
+
+@app.context_processor
+def inject_globals():
+    return dict(nav_links=NAV_LINKS, now=datetime.now)
