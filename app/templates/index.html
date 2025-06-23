@@ -70,6 +70,16 @@
                {% endfor %}
             </ul>
          </div>
-    </main>
-</body>
+
+         <h2>Education</h2>
+         <ul>
+            {% for edu in education %}
+            <li>
+               <strong>{{ edu.degree }}</strong>, {{ edu.school }} ({{ edu.year
+               }})
+            </li>
+            {% endfor %}
+         </ul>
+      </main>
+   </body>
 </html>

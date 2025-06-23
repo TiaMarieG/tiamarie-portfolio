@@ -25,8 +25,13 @@ def index():
             "description": "Worked with professors to update tools and resources they used to manage their classes."
         }
     ]
+
+    education = [
+        {"school": "Green River College", "degree": "BAS in Software Engineering", "year": "2026"},
+        {"school": "Green River College", "degree": "AAS in Software Engineering", "year": "2024"}
+    ]
     
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), work_experience=work_experience)
+    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), work_experience=work_experience, education=education)
 
 @app.route('/hobbies')
 def hobbies():

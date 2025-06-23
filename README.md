@@ -20,7 +20,7 @@ For each of these tasks, you should create an [Issue](https://docs.github.com/en
 - [x] Add an "About youself" section to the website. - Done
 - [x] Add your previous work experiences - Done
 - [x] Add your hobbies (including images) - Done
-- [x] Add your current/previous education
+- [x] Add your current/previous education - Done
 - [x] Add a map of all the cool locations/countries you visited
 
 ### Flask Tasks
