@@ -9,6 +9,7 @@ body {
     overflow-x: hidden;
     font-family: "Roboto", serif;
     margin: 0px;
+    text-align: center;
 }
 
 .nav-bar {
@@ -96,6 +97,10 @@ body {
     font-weight: 700;
 }
 
+.hobbies-section h1 {
+    text-align: center;
+}
+
 .hobby-grid {
     display: flex;
     flex-wrap: wrap;
@@ -130,4 +135,8 @@ body {
 
 .nav-menu a:hover {
     text-decoration: underline;
+}
+
+li {
+    list-style-type: none;
 }
