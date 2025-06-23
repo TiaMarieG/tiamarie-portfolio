@@ -27,3 +27,19 @@ def index():
     ]
     
     return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), work_experience=work_experience)
+
+@app.route('/hobbies')
+def hobbies():
+    hobbies_list = [
+        {"name": "Gaming", "image": "/static/img/hobbies/World_of_Warcraft.png"},
+        {"name": "Cross-Stitching", "image": "/static/img/hobbies/Dragon-X-Stitch.jpg"},
+        {"name": "Legos", "image": "/static/img/hobbies/DD_Lego.jpg"},
+        {"name": "Reading", "image": "/static/img/hobbies/books.webp"},
+        {"name": "Web Development", "image": "/static/img/hobbies/web-dev.jpg"}
+    ]
+        
+    return render_template(
+        'hobbies.html',
+        title="Hobbies",
+        hobbies=hobbies_list
+    )
