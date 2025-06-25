@@ -41,7 +41,7 @@ def index():
         {"school": "Green River College", "degree": "AAS in Software Engineering", "year": "2024"}
     ]
     
-    return render_template('index.html', title="MLH Fellow", url=os.getenv("URL"), work_experience=work_experience, education=education)
+    return render_template('index.html', title="Tia Marie Gordon", url=os.getenv("URL"), work_experience=work_experience, education=education)
 
 @app.route('/hobbies')
 def hobbies():
@@ -58,3 +58,9 @@ def hobbies():
         title="Hobbies",
         hobbies=hobbies_list
     )
+
+from datetime import datetime
+
+@app.context_processor
+def inject_globals():
+    return dict(nav_links=NAV_LINKS, now=datetime.now)

@@ -38,33 +38,48 @@
          </div>
       </header>
 
-    <div class="profile">
-        <div id="profile-picture" class="profile-picture">
-            <img src="./static/img/personal_photo.jpg">
-        </div>
-        <h1>{{ title }}</h1>
-    </div>
+      <div class="profile">
+         <div id="profile-picture" class="profile-picture">
+            <img src="./static/img/personal_photo.jpg" />
+         </div>
+         <h1>{{ title }}</h1>
+      </div>
 
-    <main>
-        <div class="about-me">
+      <main>
+         <div class="section-card">
             <h2>About Me</h2>
-            <p>Greetings! My name is Tia Marie Gordon. Technically, my first name is Tia Marie, but I preferred to be called Tia.</p>
             <p>
-                Here is a little bit about me:
+               Greetings! My name is Tia Marie Gordon. Technically, my first
+               name is Tia Marie, but I preferred to be called Tia.
             </p>
+            <p>Here is a little bit about me:</p>
 
             <ul>
-                <li>I'm 33 years old and currently live in Washington.</li>
-                <li>Originally, I'm from Florida, but moved to Texas around my 16th birthday, then to Washington around my 20th.</li>
-                <li>My interest in tech started with my dad building me a basic custom PC when I was younger.</li>
-                <li>I studied in Marine Biology during my first stint at college with a focus in Killer Whales.</li>
-                <li>I discovered my love for coding while assisting my husband with creating a game.</li>
-                <li>World of Warcraft is a passion of mine and I've played it since roughly 2009. It's actually where I met my husband.</li>
+               <li>I'm 33 years old and currently live in Washington.</li>
+               <li>
+                  Originally, I'm from Florida, but moved to Texas around my
+                  16th birthday, then to Washington around my 20th.
+               </li>
+               <li>
+                  My interest in tech started with my dad building me a basic
+                  custom PC when I was younger.
+               </li>
+               <li>
+                  I studied in Marine Biology during my first stint at college
+                  with a focus in Killer Whales.
+               </li>
+               <li>
+                  I discovered my love for coding while assisting my husband
+                  with creating a game.
+               </li>
+               <li>
+                  World of Warcraft is a passion of mine and I've played it
+                  since roughly 2009. It's actually where I met my husband.
+               </li>
             </ul>
-        </div>
-      
-      <div class="prev-work-experience">
+         </div>
 
+         <div class="section-card">
             <h2>Work Experience</h2>
             <ul>
                {% for job in work_experience %}
@@ -76,22 +91,32 @@
             </ul>
          </div>
 
-         <h2>Education</h2>
-         <ul>
-            {% for edu in education %}
-            <li>
-               <strong>{{ edu.degree }}</strong>, {{ edu.school }} ({{ edu.year
-               }})
-            </li>
-            {% endfor %}
-         </ul>
+         <div class="section-card">
+            <h2>Education</h2>
+            <ul>
+               {% for edu in education %}
+               <li>
+                  <strong>{{ edu.degree }}</strong>, {{ edu.school }} ({{
+                  edu.year }})
+               </li>
+               {% endfor %}
+            </ul>
+         </div>
 
-         <h2>States I've Visited</h2>
-         <img
-            src="./static/img/visited_states.jpg"
-            alt="Map of states visited"
-            class="states-visited"
-         />
+         <div class="section-card">
+            <h2>States I've Visited</h2>
+            <img
+               src="./static/img/visited_states.jpg"
+               alt="Map of states visited"
+               class="states-visited"
+            />
+         </div>
       </main>
+
+      <footer
+         style="padding: 20px; text-align: center; font-size: 14px; color: #999"
+      >
+         &copy; {{ title }} • {{ now().year }}
+      </footer>
    </body>
 </html>
