@@ -30,4 +30,4 @@ source \"$VENV_DIR/bin/activate\"
 flask run --host=0.0.0.0 --port=5000
 "
 
-echo "==> ✅ Site deployed and running in tmux session '$TMUX_SESSION_NAME'."
+echo "==> Site deployed and running in tmux session '$TMUX_SESSION_NAME'."

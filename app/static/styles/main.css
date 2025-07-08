@@ -171,3 +171,61 @@ h2 {
    padding-bottom: 5px;
    margin-bottom: 15px;
 }
+
+.timeline-form {
+   max-width: 600px;
+   margin: 30px auto;
+   padding: 20px;
+   background-color: #fbd688;
+   border-radius: 12px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+   text-align: left;
+}
+
+.timeline-form label {
+   display: block;
+   margin-bottom: 10px;
+   font-weight: bold;
+}
+
+.timeline-form input,
+.timeline-form textarea {
+   width: 100%;
+   padding: 10px 0 10px 0;
+   margin-top: 5px;
+   margin-bottom: 15px;
+   margin-right: 15px;
+   border: 1px solid #ccc;
+   border-radius: 6px;
+   font-family: "Roboto", serif;
+}
+
+.timeline-form button {
+   background-color: #1c539f;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   font-size: 16px;
+   font-family: "Roboto", serif;
+   border-radius: 6px;
+   cursor: pointer;
+}
+
+.timeline-posts {
+   max-width: 600px;
+   margin: 30px auto;
+   text-align: left;
+}
+
+.timeline-post {
+   background-color: white;
+   padding: 15px;
+   margin-bottom: 15px;
+   border-left: 6px solid #1c539f;
+   border-radius: 8px;
+   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-post p {
+   margin: 0 0 10px;
+}

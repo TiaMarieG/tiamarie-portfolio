@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Timeline</title>
+      <link
+         rel="stylesheet"
+         href="{{ url_for('static', filename='styles/main.css') }}"
+      />
+      <script
+         defer
+         src="{{ url_for('static', filename='scripts/timeline.js') }}"
+      ></script>
+   </head>
+   <body>
+      <header class="nav-bar">
+         <div class="nav-content">
+            <nav class="nav-menu">
+               {% for link in nav_links %}
+               <a href="{{ url_for(link.endpoint) }}">{{ link.name }}</a>
+               {% endfor %}
+            </nav>
+         </div>
+      </header>
+
+      <main>
+         <h1>Timeline</h1>
+
+         <form class="timeline-form" onsubmit="submitPost(event)">
+            <label
+               >Name:
+               <input type="text" name="name" required />
+            </label>
+            <label
+               >Email:
+               <input type="email" name="email" required />
+            </label>
+            <label
+               >Content:
+               <textarea name="content" rows="4" required></textarea>
+            </label>
+            <button type="submit">Post</button>
+         </form>
+
+         <div class="timeline-posts" id="timeline-posts"></div>
+      </main>
+   </body>
+</html>

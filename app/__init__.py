@@ -1,5 +1,4 @@
 import os
-
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
@@ -9,6 +8,7 @@ from datetime import datetime
 load_dotenv()
 app = Flask(__name__)
 
+# Setup Peewee MySQL database using environment variables
 mydb = MySQLDatabase(
     os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
@@ -19,28 +19,30 @@ mydb = MySQLDatabase(
 
 print(mydb)
 
+# Define TimelinePost model
 class TimelinePost(Model):
     name = CharField()
     email = CharField()
     content = TextField()
-    created_at = DateTimeField(default = datetime.datetime.now)
+    created_at = DateTimeField(default=datetime.now)
 
     class Meta:
         database = mydb
 
+# Connect and create table if it doesn't exist
 mydb.connect()
 mydb.create_tables([TimelinePost])
 
+# Navigation links for base layout
 NAV_LINKS = [
     {"name": "Home", "endpoint": "index"},
-    {"name": "Hobbies", "endpoint": "hobbies"}
-    
+    {"name": "Hobbies", "endpoint": "hobbies"},
+    {"name": "Timeline", "endpoint": "timeline"}
 ]
 
 @app.context_processor
 def inject_nav_links():
     return dict(nav_links=NAV_LINKS)
-
 
 @app.route('/')
 def index():
@@ -53,7 +55,7 @@ def index():
         {
             "company": "Best Buy",
             "position": "Inventory Specialist",
-            "description": "Compared stock to online inventory to ensure acccuracy."
+            "description": "Compared stock to online inventory to ensure accuracy."
         },
         {
             "company": "Green River College",
@@ -89,15 +91,17 @@ def hobbies():
 def inject_globals():
     return dict(nav_links=NAV_LINKS, now=datetime.now)
 
+# POST endpoint to create a timeline post
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
-    name=request.form['name'],
-    email=request.form['email'],
-    content=request.form['content'],
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post)
 
+# GET endpoint to retrieve all posts, newest first
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
     return {
@@ -106,3 +110,8 @@ def get_time_line_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
+
+# Timeline form & display page
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html')
