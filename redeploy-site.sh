@@ -1,33 +1,19 @@
 #!/bin/bash
 
-# Exit on any error
+# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Configurable variables
-PROJECT_DIR="$HOME/tiamarie-portfolio"
-VENV_DIR="$PROJECT_DIR/python3-virtualenv"
-TMUX_SESSION_NAME="flask-server"
+cd /root/tiamarie-portfolio
 
-echo "==> Killing any running tmux sessions..."
-tmux kill-server || true
+# Fetches latest code from GitHub
+git fetch && git reset origin/main --hard
 
-echo "==> Entering project directory..."
-cd "$PROJECT_DIR"
+# Activates virtual environment
+source python3-virtualenv/bin/activate
 
-echo "==> Fetching and resetting latest changes from GitHub..."
-git fetch
-git reset origin/main --hard
-
-echo "==> Activating virtualenv and installing dependencies..."
-source "$VENV_DIR/bin/activate"
+# Installs dependencies
 pip install -r requirements.txt
-deactivate
 
-echo "==> Launching Flask in a detached tmux session..."
-tmux new-session -d -s "$TMUX_SESSION_NAME" bash -c "
-cd \"$PROJECT_DIR\"
-source \"$VENV_DIR/bin/activate\"
-flask run --host=0.0.0.0 --port=5000
-"
-
-echo "==> Site deployed and running in tmux session '$TMUX_SESSION_NAME'."
+# Restarts systemd service
+sudo systemctl daemon-reload
+sudo systemctl restart myportfolio
