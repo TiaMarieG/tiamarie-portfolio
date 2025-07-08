@@ -1,4 +1,8 @@
 import os
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
