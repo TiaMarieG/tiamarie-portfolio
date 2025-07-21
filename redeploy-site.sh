@@ -3,17 +3,21 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Step 1: Enter project directory
 cd /root/tiamarie-portfolio
+echo "Changed directory to /root/tiamarie-portfolio"
 
-# Fetches latest code from GitHub
-git fetch && git reset origin/main --hard
+# Step 2: Fetch and reset to latest main branch from GitHub
+echo "Fetching and resetting to origin/main"
+git fetch
+git reset origin/main --hard
 
-# Activates virtual environment
-source python3-virtualenv/bin/activate
+# Step 3: Spin down existing containers to free memory
+echo "Stopping existing containers"
+docker compose -f docker-compose.prod.yml down
 
-# Installs dependencies
-pip install -r requirements.txt
+# Step 4: Build and start containers in detached mode
+echo "Building and starting Docker containers"
+docker compose -f docker-compose.prod.yml up -d --build
 
-# Restarts systemd service
-sudo systemctl daemon-reload
-sudo systemctl restart myportfolio
+echo "✅ Deployment complete."
