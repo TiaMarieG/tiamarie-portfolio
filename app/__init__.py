@@ -1,5 +1,5 @@
 import os
-
+import time
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -37,7 +37,17 @@ class TimelinePost(Model):
         database = mydb
 
 # Connect and create table if it doesn't exist
-mydb.connect()
+MAX_RETRIES = 10
+for attempt in range(MAX_RETRIES):
+    try:
+        mydb.connect()
+        print("✅ Connected to MySQL!")
+        break
+    except OperationalError as e:
+        print(f"⏳ MySQL not ready (attempt {attempt + 1}/{MAX_RETRIES}): {e}")
+        time.sleep(3)
+else:
+    raise RuntimeError("❌ MySQL connection failed after multiple attempts.")
 mydb.create_tables([TimelinePost])
 
 # Navigation links for base layout
