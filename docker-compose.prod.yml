@@ -1,46 +1,37 @@
-version: "3.8"
-
 services:
   myportfolio:
-    build:
-      context: .
-    depends_on:
-      - mysql
+    container_name: myportfolio
+    build: .
+    restart: always
     env_file:
       - .env
-    networks:
-      - backend
+    depends_on:
+      - mysql
 
   mysql:
-    image: mariadb:11
+    container_name: mysql
+    image: mariadb
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    env_file:
+      - .env
     volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - backend
+      - mydatabase:/var/lib/mysql
 
   nginx:
-    image: jonasal/nginx-certbot
     container_name: nginx
+    image: jonasal/nginx-certbot
+    restart: always
+    environment:
+      - CERTBOT_EMAIL=name@example.com
     ports:
       - 80:80
       - 443:443
-    environment:
-      - CERTBOT_EMAIL=your-email@example.com
     volumes:
-      - ./user_conf.d:/etc/nginx/user_conf.d
       - nginx_secrets:/etc/letsencrypt
-    networks:
-      - backend
+      - ./user_conf.d:/etc/nginx/user_conf.d
+    depends_on:
+      - myportfolio
 
 volumes:
-  db_data:
+  mydatabase:
   nginx_secrets:
-
-networks:
-  backend:
