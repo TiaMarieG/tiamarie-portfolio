@@ -13,8 +13,8 @@ services:
     container_name: mysql
     image: mariadb
     restart: always
-    healthcheck: # <-- Use this updated block
-      test: ["CMD-SHELL", "mysql -u root -p$${MYSQL_ROOT_PASSWORD} -e 'SELECT 1'"]
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/localhost/3306'"]
       interval: 10s
       timeout: 5s
       retries: 5
